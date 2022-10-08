@@ -14,18 +14,11 @@ public class Ujian {
    @Column(name = "id_ujian")
     private Integer idUjian;
 
-    @Column(name = "id_matkul")
-    private Integer idMatkul;
-
     @Column(name = "judul_ujian")
     private String judulUjian;
 
     @Column(name = "stat_ujian")
     private String statUjian;
-
-    @OneToOne
-    @JoinColumn(name = "id_matkul", insertable = false, updatable = false)
-    private Matkul matkul;
 
     public Integer getIdUjian() {
         return idUjian;
@@ -33,22 +26,6 @@ public class Ujian {
 
     public void setIdUjian(Integer idUjian) {
         this.idUjian = idUjian;
-    }
-
-    public Integer getIdMatkul() {
-        return idMatkul;
-    }
-
-    public void setIdMatkul(Integer idMatkul) {
-        this.idMatkul = idMatkul;
-    }
-
-    public Matkul getMatkul() {
-        return matkul;
-    }
-
-    public void setMatkul(Matkul matkul) {
-        this.matkul = matkul;
     }
 
     public String getJudulUjian() {

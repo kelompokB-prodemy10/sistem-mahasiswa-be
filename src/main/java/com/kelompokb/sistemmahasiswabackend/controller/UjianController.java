@@ -28,17 +28,11 @@ public class UjianController {
     public DefaultResponse<UjianDto> saveUjian (@RequestBody UjianDto ujianDto) {
         Ujian ujian = convertDtoToEntity(ujianDto);
         DefaultResponse<UjianDto> df = new DefaultResponse<>();
-        Optional<Ujian> optionalMatkul = ujianRepo.findByIdMatkul(ujianDto.getIdMatkul());
-        if (optionalMatkul.isPresent()) {
-            df.setStatus(Boolean.FALSE);
-            df.setMessage("Gagal, Data Ujian Sudah Terdaftar");
-        } else {
-            ujianRepo.save(ujian);
-            df.setStatus(Boolean.TRUE);
-            df.setData(ujianDto);
-            df.setMessage("Data Ujian Tersimpan");
-        }
+        ujianRepo.save(ujian);
+        df.setMessage("Data Jurusan Berhasil Tersimpan");
+        df.setData(ujianDto);
         return df;
+
     }
     @GetMapping("/listujian") //list nilai OKE
     public List<Ujian> getListUjian() {
@@ -56,9 +50,7 @@ public class UjianController {
             Ujian entity = optionalUjian.get();
             dto.setIdUjian(entity.getIdUjian());
             dto.setJudulUjian(entity.getJudulUjian());
-            dto.setIdMatkul(entity.getIdMatkul());
             dto.setStatUjian(entity.getStatUjian());
-            dto.setMatkul(entity.getMatkul());
         }
         return dto;
     }
@@ -70,7 +62,6 @@ public class UjianController {
         if (ujianOptional.isPresent()) {
             ujian.setIdUjian(ujianDto.getIdUjian());
             ujian.setJudulUjian(ujianDto.getJudulUjian());
-            ujian.setIdMatkul(ujianDto.getIdMatkul());
             ujian.setStatUjian(ujianDto.getStatUjian());
             ujianRepo.save(ujian);
             df.setStatus(Boolean.TRUE);
@@ -102,7 +93,6 @@ public class UjianController {
         Ujian ujian = new Ujian();
         ujian.setIdUjian(dto.getIdUjian());
         ujian.setJudulUjian(dto.getJudulUjian());
-        ujian.setIdMatkul(dto.getIdMatkul());
         ujian.setStatUjian(dto.getStatUjian());
 
         return ujian;
@@ -111,9 +101,8 @@ public class UjianController {
         Ujian dto = new Ujian();
         dto.setIdUjian(entity.getIdUjian());
         dto.setJudulUjian(entity.getJudulUjian());
-        dto.setIdMatkul(entity.getIdMatkul());
         dto.setStatUjian(entity.getStatUjian());
-        dto.setMatkul(entity.getMatkul());
+
 
         return dto;
     }

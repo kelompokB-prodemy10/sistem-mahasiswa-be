@@ -36,7 +36,17 @@ public class NilaiController {
         Optional<Nilai> optionalUjian = nilaiRepo.findByIdUjian(nilaiDto.getIdUjian());
         Optional<Nilai> optionalJurusan = nilaiRepo.findByIdJurusan(nilaiDto.getIdJurusan());
         Optional<Nilai> optionalMatkul = nilaiRepo.findByIdMatkul(nilaiDto.getIdMatkul());
-        if (optionalMhs.isPresent() && optionalUjian.isPresent() && optionalJurusan.isPresent() && optionalMatkul.isPresent()) {
+        if (optionalMhs.isPresent()){
+            if (optionalJurusan.isPresent()){
+                if (optionalUjian.isPresent()){
+                    if (optionalMatkul.isPresent()){
+                        nilaiRepo.save(nilai);
+                        df.setStatus(Boolean.TRUE);
+                        df.setData(nilaiDto);
+                        df.setMessage("Data Nilai Tersimpan");
+                    }
+                }
+            }
             df.setStatus(Boolean.FALSE);
             df.setMessage("Gagal, Data Nilai Sudah Terdaftar");
         } else {
