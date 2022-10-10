@@ -89,8 +89,8 @@ public class NilaiController {
             dto.setIdJurusan(entity.getJurusan().getIdJurusan());
             dto.setJudulUjian(entity.getUjian().getJudulUjian());
             dto.setStatUjian(entity.getUjian().getStatUjian());
-//            dto.setMatkul(entity.getMatkul());
-//            dto.setJurusan(entity.getJurusan());
+            dto.setMatkul(entity.getMatkul());
+            dto.setJurusan(entity.getJurusan());
             dto.setNilai(entity.getNilai());
         }
         return dto;
