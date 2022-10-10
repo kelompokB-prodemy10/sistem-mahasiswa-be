@@ -36,7 +36,7 @@ public class NilaiController {
         Optional<Nilai> optionalUjian = nilaiRepo.findByIdUjian(nilaiDto.getIdUjian());
         Optional<Nilai> optionalJurusan = nilaiRepo.findByIdJurusan(nilaiDto.getIdJurusan());
         Optional<Nilai> optionalMatkul = nilaiRepo.findByIdMatkul(nilaiDto.getIdMatkul());
-        if (optionalMhs.isPresent() && optionalJurusan.isPresent() ) {
+        if (optionalMhs.isPresent() && optionalJurusan.isPresent() && optionalUjian.isPresent() && optionalMatkul.isPresent() ) {
             df.setStatus(Boolean.FALSE);
             df.setMessage("Gagal, Data Nilai Sudah Terdaftar");
         } else {
@@ -47,12 +47,13 @@ public class NilaiController {
         }
         return df;
     }
-    //    @PostMapping("/savenilai") //save nilai dengan autogenerate OKE
+//    @CrossOrigin
+//    @PostMapping("/savenilai") //save nilai dengan autogenerate OKE
 //    public DefaultResponse<NilaiIdDto> saveNilai(@RequestBody NilaiIdDto nilaiDto) {
 //        Nilai nilai = convertDtoToEntity(nilaiDto);
 //        DefaultResponse<NilaiIdDto> df = new DefaultResponse<>();
-//       Optional<Nilai> optionalNilai = nilaiRepo.findById(nilaiDto.getIdNilai());
-//     if (optionalNilai.isPresent()) {
+//        Optional<Nilai> optionalNilai = nilaiRepo.findById(nilaiDto.getIdNilai());
+//        if (optionalNilai.isPresent()) {
 //            df.setStatus(Boolean.FALSE);
 //            df.setMessage("Gagal");
 //        } else {
