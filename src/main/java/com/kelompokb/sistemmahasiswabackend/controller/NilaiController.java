@@ -36,7 +36,7 @@ public class NilaiController {
         Optional<Nilai> optionalUjian = nilaiRepo.findByIdUjian(nilaiDto.getIdUjian());
         Optional<Nilai> optionalJurusan = nilaiRepo.findByIdJurusan(nilaiDto.getIdJurusan());
         Optional<Nilai> optionalMatkul = nilaiRepo.findByIdMatkul(nilaiDto.getIdMatkul());
-        if (optionalMhs.isPresent() && optionalUjian.isPresent() && optionalJurusan.isPresent() && optionalMatkul.isPresent()) {
+        if (optionalMhs.isPresent() && optionalJurusan.isPresent() ) {
             df.setStatus(Boolean.FALSE);
             df.setMessage("Gagal, Data Nilai Sudah Terdaftar");
         } else {
